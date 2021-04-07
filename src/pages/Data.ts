@@ -92,7 +92,7 @@ export const Data = [
     mainFocus: 'frontend',
     status: 'completed',
     webpage: '...',
-    gitHub: '...',
+    gitHub: 'https://github.com/Thao-Nguyen-Ojala/landingpage',
     img: landingPage,
     alt: 'landingPage img',
   },

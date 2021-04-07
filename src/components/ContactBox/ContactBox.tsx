@@ -1,7 +1,6 @@
-import { Avatar, createStyles, IconButton, makeStyles, Typography } from '@material-ui/core';
-import { LockOpenOutlined } from '@material-ui/icons';
-import React from 'react';
+import { makeStyles, Typography } from '@material-ui/core';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import React from 'react';
 
 const useStyle = makeStyles((theme) => ({
   root: {
