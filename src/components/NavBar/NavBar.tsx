@@ -1,7 +1,7 @@
 import { Box, Dialog, DialogContent, IconButton, makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { Close } from '@material-ui/icons';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { GiTechnoHeart } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 import ContactBox from '../ContactBox/ContactBox';
