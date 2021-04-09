@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, Collapse, Grid } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -10,8 +10,11 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import React from 'react';
+import React, { useState } from 'react';
 import { mainData } from '../../interfaces';
+import TextAccordion from './TextAccordion';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import clsx from 'clsx';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -42,14 +45,50 @@ const useStyles = makeStyles((theme: Theme) =>
       },
       marginBottom: theme.spacing(1),
     },
+    expand: {
+      transform: 'rotate(0deg)',
+      marginLeft: 'auto',
+      color: '#F50057',
+      transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+      }),
+    },
+    expandOpen: {
+      transform: 'rotate(180deg)',
+    },
     content: {
       paddingTop: theme.spacing(3),
-      paddingBottom: theme.spacing(5),
-      height: '100px',
-      textAlign: 'justify',
+      paddingBottom: theme.spacing(3),
+
+      /*[theme.breakpoints.down('md')]: {
+        backgroundColor: theme.palette.secondary.main,
+        height: '150px',
+      },*/
+    },
+    gridContainer: {
+      borderTop: 'solid 0.5px rgba(170, 170, 170, .7)',
+      borderRadius: '0.5rem',
+      boxShadow: '2px 2px 3px 1px rgba(170, 170, 170, .2)',
+      display: 'flex',
+      alignItems: 'center',
+      height: '3rem',
+    },
+    gridStatus: {
+      flexBasis: '33.33%',
+      flexShrink: 0,
+    },
+    gridTitle: {
+      marginLeft: '1rem',
+      color: '#7C7C7C',
+    },
+    gitHubIcon: {
+      color: '#F50057',
     },
     cardAction: {
       paddingTop: '2rem',
+    },
+    decription: {
+      textAlign: 'justify',
     },
   })
 );
@@ -60,6 +99,10 @@ type ProjectType = {
 
 export default function Project({ project }: ProjectType) {
   const classes = useStyles();
+  const [expandText, setExpandText] = useState(false);
+  const handleExpandClick = () => {
+    setExpandText(!expandText);
+  };
 
   return (
     <Card className={classes.root}>
@@ -77,26 +120,31 @@ export default function Project({ project }: ProjectType) {
       <CardMedia className={classes.media} image={project.img} title={project.img} />
 
       <CardContent className={classes.content}>
-        <Typography variant='caption' color='textPrimary' component='p'>
-          Status: {project.status}
-        </Typography>
-
-        <Typography variant='body1' color='textPrimary' component='p'>
-          {project.description}
-        </Typography>
+        <Grid className={classes.gridContainer}>
+          <Grid className={classes.gridStatus}>
+            <Typography variant='body1' color='textPrimary' component='p'>
+              Status
+            </Typography>
+          </Grid>
+          <Grid className={classes.gridTitle}>
+            <Typography variant='body1' component='p'>
+              {project.status}
+            </Typography>
+          </Grid>
+        </Grid>
       </CardContent>
 
       <CardActions disableSpacing className='cardAciton'>
         <a href={project.gitHub} target='_blank' rel='noopener noreferrer'>
           <IconButton aria-label='go to GitHub'>
-            <GitHubIcon />
+            <GitHubIcon className={classes.gitHubIcon} />
           </IconButton>
         </a>
         <IconButton aria-label='visit page'>
           <Button
             size='small'
             variant='outlined'
-            color='primary'
+            color='secondary'
             endIcon={<DoubleArrowIcon />}
             value={project.webpage}
             onClick={() => {
@@ -106,7 +154,24 @@ export default function Project({ project }: ProjectType) {
             Visit Page
           </Button>
         </IconButton>
+        <IconButton
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expandText,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expandText}
+          aria-label='show more'
+        >
+          <ExpandMoreIcon />
+        </IconButton>
       </CardActions>
+      <Collapse in={expandText} timeout='auto' unmountOnExit>
+        <CardContent className={classes.decription}>
+          <Typography variant='body1' color='textPrimary' component='p'>
+            {project.description}
+          </Typography>
+        </CardContent>
+      </Collapse>
     </Card>
   );
 }
