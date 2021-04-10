@@ -9,12 +9,11 @@ import IconButton from '@material-ui/core/IconButton';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import clsx from 'clsx';
 import React, { useState } from 'react';
 import { mainData } from '../../interfaces';
-import TextAccordion from './TextAccordion';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import clsx from 'clsx';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -59,12 +58,27 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       paddingTop: theme.spacing(3),
       paddingBottom: theme.spacing(3),
-
-      /*[theme.breakpoints.down('md')]: {
-        backgroundColor: theme.palette.secondary.main,
-        height: '150px',
-      },*/
     },
+
+    /*render: {
+      [theme.breakpoints.up('xs')]: {
+        backgroundColor: '#ffffff',
+        borderRadius: '1rem',
+        margin: 'auto',
+      },
+      [theme.breakpoints.up('small')]: {
+        backgroundColor: '#ffffff',
+        flex: '1 1 auto',
+        marginTop: theme.spacing(1),
+      },
+      [theme.breakpoints.up('medium')]: {
+        backgroundColor: '#ffffff',
+        flex: '1 1 0',
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
+      },
+    },*/
+
     gridContainer: {
       borderTop: 'solid 0.5px rgba(170, 170, 170, .7)',
       borderRadius: '0.5rem',

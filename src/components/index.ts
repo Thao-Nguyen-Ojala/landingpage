@@ -1,4 +1,4 @@
-export {default as Footer} from './Footer/Footer'
+
 export {default as NavBar} from './NavBar/NavBar'
 export {default as HeroCarousel} from './HeroCarousel/HeroCarousel'
 export {default as ImageSection} from './ImageSection/ImageSection'

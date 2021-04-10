@@ -4,7 +4,12 @@ import { mainData } from '../../interfaces';
 import { Project } from '../index';
 
 const useStyle = makeStyles((theme) => ({
-  root: {},
+  root: {
+    [theme.breakpoints.up('xs')]: {
+      display: 'block',
+    },
+    [theme.breakpoints.up('medium')]: {},
+  },
   list: {
     paddingTop: theme.spacing(2),
   },

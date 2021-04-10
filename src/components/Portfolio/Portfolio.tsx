@@ -1,4 +1,4 @@
-import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
+import { Box, Container, createMuiTheme, Grid, makeStyles, Paper, ThemeProvider } from '@material-ui/core';
 import React, { useState } from 'react';
 import { languageFilter, mainData } from '../../interfaces';
 import { LanguageFilter, PortfolioList, ProjectSkeleton } from '../index';
@@ -8,32 +8,55 @@ type PortfolioType = {
   projects: mainData[];
 };
 
-const useStyle = makeStyles((theme) => ({
-  root: {
-    marginTop: '2rem',
-    maxWidth: '1200px',
-    border: 'solid 1.5px #e4e4e4',
-    borderRadius: '1rem',
-    margin: 'auto',
-    overflow: 'hidden',
-    backgroundColor: 'rgba(25,118,210, 0.1)',
-  },
-  filters: {
-    width: '25%',
-    backgroundColor: '#ffffff',
-    borderRadius: '1rem',
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
-  },
-  render: {
-    flex: '1 1 0',
-    backgroundColor: '#ffffff',
-    borderRadius: '1rem',
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
-  },
-  list: {},
-}));
+const useStyle = makeStyles((theme) => {
+  console.log('theme', theme);
+  return {
+    root: {
+      marginTop: '2rem',
+      maxWidth: '1200px',
+      border: 'solid 1.5px #e4e4e4',
+      borderRadius: '1rem',
+      margin: 'auto',
+      overflow: 'hidden',
+      backgroundColor: 'rgba(25,118,210, 0.1)',
+    },
+    filters: {
+      [theme.breakpoints.up('xs')]: {
+        width: '100%',
+        borderRadius: '1rem',
+        margin: 'auto',
+      },
+      [theme.breakpoints.up('small')]: {
+        marginTop: theme.spacing(1),
+      },
+
+      [theme.breakpoints.up('medium')]: {
+        width: '25%',
+        backgroundColor: '#ffffff',
+        paddingTop: theme.spacing(3),
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
+      },
+    },
+
+    render: {
+      [theme.breakpoints.up('xs')]: {
+        display: 'block',
+        backgroundColor: '#ffffff',
+        borderRadius: '1rem',
+        margin: 'auto',
+      },
+      [theme.breakpoints.up('small')]: {
+        marginTop: theme.spacing(1),
+      },
+      [theme.breakpoints.up('medium')]: {
+        flex: '1 1 0',
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
+      },
+    },
+  };
+});
 
 export default function Portfolio({ projects }: PortfolioType) {
   const classes = useStyle();
@@ -63,14 +86,14 @@ export default function Portfolio({ projects }: PortfolioType) {
     <div>
       <Box className={classes.root}>
         <Container>
-          <Grid container spacing={3}>
+          <Grid container spacing={2}>
             <Grid item className={classes.filters}>
               <Paper elevation={0}>
                 <LanguageFilter languages={languages} onChange={selectedLanguageChange}></LanguageFilter>
               </Paper>
             </Grid>
             <Grid item className={classes.render}>
-              <Paper elevation={3} className={classes.list}>
+              <Paper elevation={0}>
                 <PortfolioList projectsToRender={projectsToRender}></PortfolioList>
               </Paper>
             </Grid>
