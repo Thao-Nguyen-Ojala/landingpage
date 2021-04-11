@@ -18,7 +18,7 @@ const useStyle = makeStyles((theme) => ({
     paddingTop: theme.spacing(1),
 
     color: '#212121',
-    fontSize: '4rem',
+    fontSize: '3rem',
     transition: 'all 1s',
 
     '&:hover': {

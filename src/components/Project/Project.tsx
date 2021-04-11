@@ -60,25 +60,6 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingBottom: theme.spacing(3),
     },
 
-    /*render: {
-      [theme.breakpoints.up('xs')]: {
-        backgroundColor: '#ffffff',
-        borderRadius: '1rem',
-        margin: 'auto',
-      },
-      [theme.breakpoints.up('small')]: {
-        backgroundColor: '#ffffff',
-        flex: '1 1 auto',
-        marginTop: theme.spacing(1),
-      },
-      [theme.breakpoints.up('medium')]: {
-        backgroundColor: '#ffffff',
-        flex: '1 1 0',
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(3),
-      },
-    },*/
-
     gridContainer: {
       borderTop: 'solid 0.5px rgba(170, 170, 170, .7)',
       borderRadius: '0.5rem',
@@ -148,7 +129,7 @@ export default function Project({ project }: ProjectType) {
         </Grid>
       </CardContent>
 
-      <CardActions disableSpacing className='cardAciton'>
+      <CardActions disableSpacing className={classes.cardAction}>
         <a href={project.gitHub} target='_blank' rel='noopener noreferrer'>
           <IconButton aria-label='go to GitHub'>
             <GitHubIcon className={classes.gitHubIcon} />

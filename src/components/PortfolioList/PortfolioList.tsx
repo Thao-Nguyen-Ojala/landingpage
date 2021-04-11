@@ -4,12 +4,7 @@ import { mainData } from '../../interfaces';
 import { Project } from '../index';
 
 const useStyle = makeStyles((theme) => ({
-  root: {
-    [theme.breakpoints.up('xs')]: {
-      display: 'block',
-    },
-    [theme.breakpoints.up('medium')]: {},
-  },
+  root: {},
   list: {
     paddingTop: theme.spacing(2),
   },
@@ -20,13 +15,12 @@ type PortfolioType = {
 };
 
 export default function PortfolioList({ projectsToRender }: PortfolioType) {
-  console.log('render', projectsToRender);
   const classes = useStyle();
   return (
     <Box className={classes.root}>
       <Grid className={classes.list} container spacing={2}>
         {projectsToRender.map((project, i) => (
-          <Grid key={i} item xs={6}>
+          <Grid key={i} item xs={12} md={6}>
             <Project project={project} />
           </Grid>
         ))}

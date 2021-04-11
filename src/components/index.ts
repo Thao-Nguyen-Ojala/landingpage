@@ -1,7 +1,5 @@
-
 export {default as NavBar} from './NavBar/NavBar'
 export {default as HeroCarousel} from './HeroCarousel/HeroCarousel'
-export {default as ImageSection} from './ImageSection/ImageSection'
 export {default as Portfolio} from './Portfolio/Portfolio'
 export {default as PortfolioList} from './PortfolioList/PortfolioList'
 export {default as LanguageFilter} from './Filters/LanguageFilter'

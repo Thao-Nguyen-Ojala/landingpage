@@ -5,27 +5,33 @@ import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import LandingPage from './pages/LandingPage';
 
-const theme = createMuiTheme({
+const breakPointValues = {
   breakpoints: {
     values: {
       xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
       small: 500,
-      medium: 768,
-      large: 960,
+      medium768: 768,
     },
   },
+};
+
+const theme = createMuiTheme({
+  ...breakPointValues,
 });
 
 declare module '@material-ui/core/styles/createBreakpoints' {
   interface BreakpointOverrides {
     xs: true;
-    sm: false;
-    md: false;
-    lg: false;
-    xl: false;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
     small: true;
-    medium: true;
-    large: true;
+    medium768: true;
   }
 }
 

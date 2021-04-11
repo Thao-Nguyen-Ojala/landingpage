@@ -1,7 +1,7 @@
-import { Box, Container, createMuiTheme, Grid, makeStyles, Paper, ThemeProvider } from '@material-ui/core';
+import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
 import React, { useState } from 'react';
 import { languageFilter, mainData } from '../../interfaces';
-import { LanguageFilter, PortfolioList, ProjectSkeleton } from '../index';
+import { LanguageFilter, PortfolioList } from '../index';
 import './Portfolio.scss';
 
 type PortfolioType = {
@@ -9,7 +9,6 @@ type PortfolioType = {
 };
 
 const useStyle = makeStyles((theme) => {
-  console.log('theme', theme);
   return {
     root: {
       marginTop: '2rem',
@@ -30,7 +29,7 @@ const useStyle = makeStyles((theme) => {
         marginTop: theme.spacing(1),
       },
 
-      [theme.breakpoints.up('medium')]: {
+      [theme.breakpoints.up('medium768')]: {
         width: '25%',
         backgroundColor: '#ffffff',
         paddingTop: theme.spacing(3),
@@ -41,7 +40,6 @@ const useStyle = makeStyles((theme) => {
 
     render: {
       [theme.breakpoints.up('xs')]: {
-        display: 'block',
         backgroundColor: '#ffffff',
         borderRadius: '1rem',
         margin: 'auto',
@@ -49,7 +47,7 @@ const useStyle = makeStyles((theme) => {
       [theme.breakpoints.up('small')]: {
         marginTop: theme.spacing(1),
       },
-      [theme.breakpoints.up('medium')]: {
+      [theme.breakpoints.up('medium768')]: {
         flex: '1 1 0',
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(3),

@@ -7,7 +7,6 @@ import IconButton from '@material-ui/core/IconButton';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Skeleton } from '@material-ui/lab';
 import React from 'react';
-import { mainData } from '../../interfaces';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -46,9 +45,9 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-type ProjectSkeletonType = {
+/*type ProjectSkeletonType = {
   project: mainData;
-};
+};*/
 
 export default function ProjectSkeleton() {
   const classes = useStyles();
