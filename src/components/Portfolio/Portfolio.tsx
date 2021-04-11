@@ -71,13 +71,13 @@ export default function Portfolio({ projects }: PortfolioType) {
   };
 
   const projectsToRender = [];
-  if (languages.js === true) {
-    const jsProjects = projects.filter((project) => project.language === 'JS');
-    projectsToRender.push(...jsProjects);
-  }
   if (languages.ts === true) {
     const tsProjects = projects.filter((project) => project.language === 'TS');
     projectsToRender.push(...tsProjects);
+  }
+  if (languages.js === true) {
+    const jsProjects = projects.filter((project) => project.language === 'JS');
+    projectsToRender.push(...jsProjects);
   }
 
   return (
